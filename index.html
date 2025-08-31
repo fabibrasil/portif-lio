@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fabiana Brasil – Portfólio</title>
+  <meta name="description" content="Portfólio pessoal – projetos, habilidades e formas de contato." />
+  <meta property="og:title" content="Portfólio – Seu Nome" />
+  <meta property="og:description" content="Veja meus projetos, habilidades e formas de contato." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+   
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    :root {
+      --bg: #0b1020;      
+      --panel: #121831;   
+      --text: #e6e8f2;    
+      --muted: #a9b0c6;   
+      --brand: #0ea5e9;   
+      --accent: #a78bfa; 
+      --ring: 0 0 0 3px rgba(14,165,233,.35);
+      --shadow: 0 20px 40px rgba(2, 6, 23, 0.45);
+    }
+    .light {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0b1020;
+      --muted: #475569;
+      --brand: #0284c7;
+      --accent: #7c3aed;
+      --ring: 0 0 0 3px rgba(2,132,199,.25);
+      --shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    }
+    body { background: radial-gradient(1200px 600px at 10% -10%, rgba(167,139,250,.15), transparent 50%), radial-gradient(800px 400px at 110% 10%, rgba(14,165,233,.15), transparent 50%), var(--bg); color: var(--text); }
+
+    /* ===== Layout ===== */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(8px); background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--panel), transparent 60%); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; gap: 10px; align-items: center; font-weight: 700; letter-spacing: .4px; }
+    .brand .logo { width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg, var(--brand), var(--accent)); display: grid; place-items: center; box-shadow: var(--shadow); }
+    .brand .logo span { font-weight: 900; color: white; }
+
+    .nav a { padding: 8px 12px; border-radius: 10px; font-weight: 600; color: var(--muted); }
+    .nav a:hover, .nav a:focus { color: var(--text); outline: none; background: color-mix(in oklab, var(--panel), transparent 60%); }
+
+    .actions { display: flex; gap: 8px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: linear-gradient(135deg, var(--brand), color-mix(in oklab, var(--brand), black 15%)); color: white; font-weight: 700; box-shadow: var(--shadow); border: 0; cursor: pointer; }
+    .btn:hover { filter: brightness(1.05); }
+    .btn.secondary { background: color-mix(in oklab, var(--panel), transparent 10%); color: var(--text); border: 1px solid color-mix(in oklab, var(--panel), transparent 60%); box-shadow: none; }
+
+    /* Mobile menu */
+    .menu { display: none; gap: 6px; }
+    .menu button { background: none; border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); border-radius: 12px; padding: 8px 10px; color: var(--text); }
+
+    /* ===== Hero ===== */
+    .hero { padding: 64px 0 24px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: center; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); color: var(--muted); background: color-mix(in oklab, var(--panel), transparent 80%); font-weight: 700; }
+    .title { font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.1; margin: 14px 0 10px; font-weight: 900; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); font-size: clamp(1rem, 2vw, 1.125rem); }
+    .cta { display: flex; gap: 10px; margin: 24px 0 0; flex-wrap: wrap; }
+
+    .hero-card { background: linear-gradient(180deg, color-mix(in oklab, var(--panel), transparent 8%), color-mix(in oklab, var(--panel), transparent 0%)); border: 1px solid color-mix(in oklab, var(--panel), transparent 50%); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
+    .hero-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .hero-metric { padding: 14px; border-radius: 16px; background: color-mix(in oklab, var(--panel), transparent 10%); border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); }
+    .hero-metric h4 { margin: 0; font-size: 14px; color: var(--muted); font-weight: 700; }
+    .hero-metric p { margin: 6px 0 0; font-weight: 900; font-size: 28px; }
+
+    /* ===== Seções ===== */
+    section { padding: 48px 0; }
+    .section-title { font-size: 24px; font-weight: 900; margin: 0 0 18px; }
+    .section-desc { color: var(--muted); margin-top: -6px; margin-bottom: 18px; }
+
+    .grid { display: grid; gap: 16px; }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card { background: linear-gradient(180deg, color-mix(in oklab, var(--panel), transparent 8%), color-mix(in oklab, var(--panel), transparent 0%)); border: 1px solid color-mix(in oklab, var(--panel), transparent 50%); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+    .card .thumb { aspect-ratio: 16/9; background: color-mix(in oklab, var(--panel), transparent 30%); display: grid; place-items: center; font-weight: 800; color: var(--muted); }
+    .card .content { padding: 16px; display: grid; gap: 10px; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .badge { padding: 6px 10px; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); color: var(--muted); font-weight: 700; font-size: 12px; }
+    .card .title { font-size: 18px; margin: 0; }
+    .card .desc { color: var(--muted); margin: -4px 0 4px; }
+    .card .links { display: flex; gap: 10px; margin-top: 4px; }
+
+    /* ===== Skills ===== */
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { padding: 10px 12px; border-radius: 14px; border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); background: color-mix(in oklab, var(--panel), transparent 80%); font-weight: 700; color: var(--muted); }
+
+    /* ===== Footer ===== */
+    footer { padding: 28px 0 60px; color: var(--muted); border-top: 1px solid color-mix(in oklab, var(--panel), transparent 60%); background: color-mix(in oklab, var(--panel), transparent 90%); }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 960px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .grid.cols-3 { grid-template-columns: 1fr; }
+      .grid.cols-2 { grid-template-columns: 1fr; }
+      .nav .links { display: none; }
+      .menu { display: flex; }
+    }
+    /* A11y */
+    :focus-visible { outline: var(--ring); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="principal">
+      <a class="brand" href="#topo">
+        <div class="logo" aria-hidden="true"><span>Σ</span></div>
+        <span>Fabiana Brasil</span>
+      </a>
+      <nav class="links" aria-label="seções">
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#skills">Skills</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="actions">
+        <button class="btn secondary" id="themeToggle" aria-label="Alternar tema">🌗</button>
+        <div class="menu">
+          <button id="openMenu" aria-haspopup="true" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" hidden class="container" style="padding-bottom: 12px;">
+      <nav style="display: grid; gap: 8px;" aria-label="menu mobile">
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#skills">Skills</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <div class="container wrap">
+        <div>
+          <span class="pill">👋 Olá! Eu sou <strong>Seu Nome</strong></span>
+          <h1 class="title">Front‑end Developer focado em <span style="background: linear-gradient(90deg, var(--brand), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">experiências rápidas e acessíveis</span>.</h1>
+          <p class="subtitle">Eu construo interfaces modernas com HTML, CSS, JavaScript e frameworks como React. Aqui você encontra meus projetos, meu processo e como falar comigo.</p>
+          <div class="cta">
+            <a class="btn" href="#projetos">Ver projetos</a>
+            <a class="btn secondary" href="mailto:seuemail@exemplo.com">Fale comigo</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div class="hero-metric"><h4>Anos de experiência</h4><p>3</p></div>
+            <div class="hero-metric"><h4>Projetos publicados</h4><p>5+</p></div>
+            <div class="hero-metric"><h4>Stack favorita</h4><p>React + TS</p></div>
+            <div class="hero-metric"><h4>Disponível para</h4><p>Freela/CLT</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="container">
+      <h2 class="section-title">Projetos em destaque</h2>
+      <p class="section-desc">Seleção de projetos que demonstram minhas habilidades técnicas e decisões de design. Cada card tem links para o repositório e demo.</p>
+
+      <div class="grid cols-3">
+        <!-- Projeto 1 -->
+        <article class="card" aria-labelledby="p1-title">
+          <div class="thumb">
+            <img src="/Portifolio/assets/images/WhatsApp Image 2025-08-31 at 19.51.49.jpeg" alt="Preview do projeto Dashboard de Vendas">
+          </div>
+          <div class="content">
+            <h3 id="p1-title" class="title">Dashboard de Vendas</h3>
+            <p class="desc">SPA com gráficos interativos, filtros e modo offline. Foco em performance e UX acessível.</p>
+            <div class="badge-row">
+              <span class="badge">React</span>
+              <span class="badge">TypeScript</span>
+              <span class="badge">Recharts</span>
+              <span class="badge">PWA</span>
+            </div>
+            <div class="links">
+              <a class="btn secondary" href="#" target="_blank" rel="noopener">Código</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projeto 2 -->
+        <article class="card" aria-labelledby="p2-title">
+          <div class="thumb">
+            <img src="/Portifolio/assets/images/WhatsApp Image 2025-08-31 at 19.57.11.jpeg" alt="Preview do projeto Dashboard de Vendas">
+          </div>
+          <div class="content">
+            <h3 id="p2-title" class="title">Landing Page A/B</h3>
+            <p class="desc">Página altamente otimizada com testes A/B, SEO e Web Vitals verdes.</p>
+            <div class="badge-row">
+              <span class="badge">HTML</span>
+              <span class="badge">CSS</span>
+              <span class="badge">Vanilla JS</span>
+              <span class="badge">SEO</span>
+            </div>
+            <div class="links">
+              <a class="btn secondary" href="#" target="_blank" rel="noopener">Código</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projeto 3 -->
+        <article class="card" aria-labelledby="p3-title">
+          <div class="thumb">
+            <img src="/Portifolio/assets/images/WhatsApp Image 2025-08-31 at 20.00.30.jpeg" alt="Preview do projeto Dashboard de Vendas">
+          </div>
+          <div class="content">
+            <h3 id="p3-title" class="title">Componente UI Library</h3>
+            <p class="desc">Biblioteca de componentes acessíveis e tipados, com documentação.</p>
+            <div class="badge-row">
+              <span class="badge">Design System</span>
+              <span class="badge">Radix‑like</span>
+              <span class="badge">A11y</span>
+            </div>
+            <div class="links">
+              <a class="btn secondary" href="#" target="_blank" rel="noopener">Código</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Docs</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <h2 class="section-title">Sobre mim</h2>
+        <!-- <p class="section-desc">Breve bio com foco em resultados, tecnologias e contexto do que você curte construir.</p> -->
+        <div class="grid cols-2">
+          <div class="card" style="padding: 18px;">
+            <p>Sou desenvolvedor(a) front‑end, apaixonado(a) por criar interfaces claras e performáticas. Tenho experiência com <strong>React</strong>, <strong>TypeScript</strong>, <strong>CSS moderno</strong> (Flexbox, Grid) e boas práticas de acessibilidade. Também curto <strong>otimização</strong>, <strong>design systems</strong> e <strong>automação</strong> de fluxos.</p>
+            <p>Fora do código, gosto de estudar UX, tocar música e fazer café ☕.</p>
+          </div>
+          <div class="card" style="padding: 18px;">
+            <ul style="margin: 0; padding-left: 18px;">
+              <li><strong>Local:</strong> Sua cidade, BR</li>
+              <li><strong>Idiomas:</strong> PT‑BR (nativo), EN (fluente)</li>
+              <li><strong>Trabalho atual:</strong> Gestora de Produtos, desenvolvedora web e mobile na empresa Vine Soluções</li>
+              <li><strong>Preferências:</strong> Front‑end, Mobile, UI/UX</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="container">
+      <h2 class="section-title">Habilidades</h2>
+      <p class="section-desc">Tecnologias e ferramentas que uso no dia a dia.</p>
+      <div class="skills">
+        <span class="skill">HTML5</span>
+        <span class="skill">CSS3 / Grid / Flex</span>
+        <span class="skill">JavaScript (ESNext)</span>
+        <span class="skill">TypeScript</span>
+        <span class="skill">React</span>
+        <span class="skill">React Native</span>
+        <span class="skill">Git & GitHub</span>
+        <span class="skill">Acessibilidade (WAI‑ARIA)</span>
+        <span class="skill">SEO básico</span>
+        <span class="skill">Figma</span>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <h2 class="section-title">Vamos conversar</h2>
+        <p class="section-desc">Curtiu o que viu? Me chame e vamos construir algo juntos.</p>
+        <div class="grid cols-2">
+          <form class="card" style="padding: 18px;" onsubmit="alert('Obrigado! Em breve entro em contato.'); return false;" aria-label="formulário de contato">
+            <label>Nome<br/><input required name="nome" placeholder="Seu nome" style="width:100%; margin-top:6px; padding:12px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); background: color-mix(in oklab, var(--panel), transparent 85%); color: var(--text);"></label>
+            <br/><br/>
+            <label>E‑mail<br/><input required type="email" name="email" placeholder="seu@email.com" style="width:100%; margin-top:6px; padding:12px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); background: color-mix(in oklab, var(--panel), transparent 85%); color: var(--text);"></label>
+            <br/><br/>
+            <label>Mensagem<br/>
+              <textarea required name="mensagem" rows="5" placeholder="Como posso ajudar?" style="width:100%; margin-top:6px; padding:12px; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--panel), transparent 55%); background: color-mix(in oklab, var(--panel), transparent 85%); color: var(--text);"></textarea>
+            </label>
+            <br/>
+            <button class="btn" type="submit">Enviar</button>
+          </form>
+          <div class="card" style="padding: 18px; display: grid; gap: 10px;">
+            <a class="btn secondary" href="mailto:fabi.brasil2404@gmail.com">✉️ E‑mail</a>
+            <a class="btn secondary" href="https://github.com/fabibrasil" target="_blank" rel="noopener">💻 GitHub</a>
+            <a class="btn secondary" href="https://www.linkedin.com/in/fabiana-brasil-73b97b293/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+            <!-- <a class="btn secondary" href="#" target="_blank" rel="noopener">📄 Currículo (PDF)</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© <span id="year"></span> Seu Nome. Construído com HTML/CSS/JS. Hospedado no GitHub Pages.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Alternância de tema
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    if ((savedTheme === 'light') || (!savedTheme && prefersLight)) document.body.classList.add('light');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Menu mobile
+    const openBtn = document.getElementById('openMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    openBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.hasAttribute('hidden');
+      mobileMenu.toggleAttribute('hidden');
+      openBtn.setAttribute('aria-expanded', String(isHidden));
+    });
+  </script>
+</body>
+</html>
